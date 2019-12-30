@@ -9,8 +9,11 @@ import sqlite3
 from sqlite3 import Error
 import json
 import datetime
+import os
 
-database = r"C:\sqlite\db\BreathingEdgesLog.db"
+db_folder = r"C:\sqlite"
+database = db_folder + "\\BreathingEdgesLog.db"
+port = 8080
 
 class RequestHandler(BaseHTTPRequestHandler):
 
@@ -114,6 +117,10 @@ def create_table(create_table_sql):
         print(e)
 
 def main():
+    # Create folder for database if it doesn't exist
+    if not os.path.exists(db_folder):
+        os.makedirs(db_folder)
+
     try:
         conn = sqlite3.connect(database)
     except Error as e:
@@ -138,11 +145,9 @@ def main():
     else:
         print("Error! cannot create the database connection.")
 
-    port = 8080
     print('Listening on localhost:%s' % port)
     server = HTTPServer(('', port), RequestHandler)
     server.serve_forever()
-
 
 if __name__ == "__main__":
     parser = OptionParser()
