@@ -7,6 +7,10 @@ The Breathing Edges extension is available for download on the Google Chrome sto
 
 To set up the server, clone this repository. Then, locate and run simpleServer.py. The script will create a new folder and a sqlite database to log any activity from users interacting with the Breathing Edges extension.
 
+## Publishing and Updating the Extension
+
+Follow the instructions on [this page](https://developer.chrome.com/webstore/publish) to publish the Chrome Extension on the Google Chrome Web store. Additional information on updating the version is available. 
+
 ## Prerequisites
 
 - Python 2.7
